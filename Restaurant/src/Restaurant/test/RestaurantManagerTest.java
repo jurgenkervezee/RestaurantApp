@@ -2,7 +2,8 @@ package Restaurant.test;
 
 import Restaurant.restaurantApp.Product;
 import Restaurant.restaurantApp.RestaurantManager;
-import Restaurant.restaurantApp.Table;
+
+import Restaurant.restaurantApp.Tables;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ class RestaurantManagerTest {
 
     @Test
     void getTableTest() {
-        Table table;
+        Tables table;
         table = RestaurantManager.get().getTable("table1");
         assertEquals(table.getName(),"Table 1");
     }

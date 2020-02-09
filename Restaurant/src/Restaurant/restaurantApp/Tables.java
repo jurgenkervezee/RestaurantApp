@@ -8,12 +8,12 @@ import java.util.ArrayList;
  * Docent: Dennis Haverhals
  */
 
-public class Table {
+public class Tables {
 
     private String name;
     private ArrayList<String> orders;
 
-    public Table(String name) {
+    public Tables(String name) {
         this.name = name;
         orders = new ArrayList<String>();
     }

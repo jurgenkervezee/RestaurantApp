@@ -44,7 +44,7 @@ public class RestaurantController implements Initializable {
     private ObservableList<String> ordersList = FXCollections.observableArrayList();
 
     private Users currentUser;
-    private Table currentTable;
+    private Tables currentTable;
     private RestaurantManager restaurantManager;
     private ArrayList<Product> menuItem;
     private ArrayList<String> orders;

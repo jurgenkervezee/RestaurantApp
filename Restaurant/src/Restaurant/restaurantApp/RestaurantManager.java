@@ -16,23 +16,23 @@ public class RestaurantManager {
         return instance;
     }
 
-    public static Table getCurrent() {
+    public static Tables getCurrent() {
         return instance.currentTable;
     }
 
-    private final Table table1 = new Table("Table 1");
-    private final Table table2 = new Table("Table 2");
-    private final Table table3 = new Table("Table 3");
-    private final Table table4 = new Table("Table 4");
-    private final Table table5 = new Table("Table 5");
-    private final Table table6 = new Table("Table 6");
-    private final Table table7 = new Table("Table 7");
-    private final Table table8 = new Table("Table 8");
-    private final Table table9 = new Table("Table 9");
-    private final Table bar = new Table("Bar");
-    private Table currentTable;
+    private final Tables table1 = new Tables("Table 1");
+    private final Tables table2 = new Tables("Table 2");
+    private final Tables table3 = new Tables("Table 3");
+    private final Tables table4 = new Tables("Table 4");
+    private final Tables table5 = new Tables("Table 5");
+    private final Tables table6 = new Tables("Table 6");
+    private final Tables table7 = new Tables("Table 7");
+    private final Tables table8 = new Tables("Table 8");
+    private final Tables table9 = new Tables("Table 9");
+    private final Tables bar = new Tables("Bar");
+    private Tables currentTable;
 
-    public Table getTable(String id){
+    public Tables getTable(String id){
 
         switch (id) {
             case "table1":
