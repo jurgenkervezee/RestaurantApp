@@ -1,0 +1,5 @@
+BierLeffe,1.99
+BroodjeBal,2.01
+Katamaran,6.02
+PatatMet,2.00
+Kaviaar,300.00
