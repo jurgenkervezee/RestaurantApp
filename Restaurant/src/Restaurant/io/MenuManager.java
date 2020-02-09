@@ -16,7 +16,7 @@ public class MenuManager {
 
         private final ArrayList<Product> menu = new ArrayList<Product>();
         //SetFile
-        private File file = new File("Menu.txt");
+        private File file = new File("Restaurant/Menu.txt");
 
 
         //ReadMenu
@@ -45,8 +45,7 @@ public class MenuManager {
                     file.createNewFile();
 
                 } catch (IOException ex) {
-                    System.out.println("Error during File Creation, in readMenuFile");
-                    ex.printStackTrace();
+                    System.out.println("Error: FileNotFound Exception" + ex);
                 }
             }
             return menu;
