@@ -31,7 +31,7 @@ public class LoginController implements Initializable {
     private ComboBox<String> roleComboBox;
 
     private Users currentUser;
-    private boolean speed = false;
+    private boolean speed = true;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         clearFields();
@@ -41,7 +41,8 @@ public class LoginController implements Initializable {
     @FXML
     public void onClickLogin(ActionEvent actionEvent) {
 
-        if (speed = true){//BIJ INLEVEREN SPEED OP FALSE ZETTEN!!!
+        if (speed){//BIJ INLEVEREN SPEED OP FALSE ZETTEN!!!
+            //TODO
             currentUser = UserManager.get().createUser("Owner","Henk");
             SceneManager.setScene(SceneManager.RESTAURANT);
 

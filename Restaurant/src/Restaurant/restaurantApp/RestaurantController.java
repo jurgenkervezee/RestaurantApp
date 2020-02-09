@@ -16,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import javax.swing.*;
+
 /**
  * @Author: Jurgen Kervezee
  * Leerlijn: OOP, Object georiënteerd programmeren
@@ -32,21 +34,19 @@ public class RestaurantController implements Initializable {
 
     //OrdersTab
     @FXML
-    private ChoiceBox choiceBoxMenu;
-
+    private ChoiceBox<String> choiceBoxMenu;
     @FXML
     private Label lableCurrentUser, labelShowCurrentTable, labelError;
 
     //MenuTab
     @FXML
-    ListView listViewMenu, listViewOrders;
+    ListView<String> listViewMenu, listViewOrders;
     private ObservableList<String> items = FXCollections.observableArrayList();
     private ObservableList<String> ordersList = FXCollections.observableArrayList();
 
     private Users currentUser;
     private Tables currentTable;
     private RestaurantManager restaurantManager;
-    private ArrayList<Product> menuItem;
     private ArrayList<String> orders;
 
     @Override
@@ -55,7 +55,7 @@ public class RestaurantController implements Initializable {
         lableCurrentUser.setText(currentUser.getName());
         setTabAuthorisation();
         restaurantManager= new RestaurantManager();
-        menuItem = RestaurantManager.get().getMenu();
+        ArrayList<Product> menuItem = RestaurantManager.get().getMenu();
         for (Product product : menuItem) {
             items.add(product.getDescription() + " " + product.getPrice());
         }
@@ -121,7 +121,10 @@ public class RestaurantController implements Initializable {
     public void createBill(ActionEvent actionEvent) {
         if(orders.size()!=0){
             orders = currentTable.getOrders();
-            System.out.println(orders);
+
+            for (String a:orders){
+                System.out.println(a + "\n");
+            }
             currentTable.clearTable();
             displayCurrentOrders();
         }

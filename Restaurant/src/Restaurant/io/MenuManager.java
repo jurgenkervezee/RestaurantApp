@@ -46,14 +46,13 @@ public class MenuManager {
 
                 } catch (IOException ex) {
                     System.out.println("Error: FileNotFound Exception" + ex);
+                    ex.printStackTrace();
                 }
             }
             return menu;
         }
 
-
     //informatie bewerken
-
     public void saveMenu() {
 
 
@@ -71,7 +70,7 @@ public class MenuManager {
             try {
                 file.createNewFile();
             } catch (IOException ex) {
-                System.out.println("Error during File Creation in Save Menu");
+                System.out.println("Error: FileCouldNot be Created Exception" + ex);
                 ex.printStackTrace();
             }
         }
