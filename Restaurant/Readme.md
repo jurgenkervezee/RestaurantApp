@@ -1,4 +1,4 @@
-Dit projectis voor mijn opleiding aan het Novi leerlijn OOP
+Dit project is voor mijn opleiding aan het Novi leerlijn OOP
 Ik heb gekozen om een Restaurantapp te maken.
 
 In deze App kun je onder verschillende rollen inloggen met verschillende autorisaties.
