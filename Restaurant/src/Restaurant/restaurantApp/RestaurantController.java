@@ -1,12 +1,7 @@
 package Restaurant.restaurantApp;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
-
-import Restaurant.io.MenuManager;
 import Restaurant.main.SceneManager;
 import Restaurant.users.*;
 import javafx.collections.FXCollections;
@@ -16,7 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
-import javax.swing.*;
+
 
 /**
  * @Author: Jurgen Kervezee
@@ -34,31 +29,28 @@ public class RestaurantController implements Initializable {
 
     //OrdersTab
     @FXML
-    private ChoiceBox<String> choiceBoxMenu;
+    private ChoiceBox<Product> choiceBoxMenu;
+
     @FXML
     private Label lableCurrentUser, labelShowCurrentTable, labelError;
 
     //MenuTab
     @FXML
-    ListView<String> listViewMenu, listViewOrders;
-    private ObservableList<String> items = FXCollections.observableArrayList();
-    private ObservableList<String> ordersList = FXCollections.observableArrayList();
+    ListView<Product> listViewMenu, listViewOrders;
+    private ObservableList<Product> menuItem = FXCollections.observableArrayList();
+    private ObservableList<Product> listCurrentOrders = FXCollections.observableArrayList();
 
     private Users currentUser;
     private Tables currentTable;
     private RestaurantManager restaurantManager;
-    private ArrayList<String> orders;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         currentUser = UserManager.getCurrent();
         lableCurrentUser.setText(currentUser.getName());
         setTabAuthorisation();
-        restaurantManager= new RestaurantManager();
-        ArrayList<Product> menuItem = RestaurantManager.get().getMenu();
-        for (Product product : menuItem) {
-            items.add(product.getDescription() + " " + product.getPrice());
-        }
+        restaurantManager = new RestaurantManager();
+        menuItem = RestaurantManager.get().getMenu();
     }
 
 
@@ -68,10 +60,11 @@ public class RestaurantController implements Initializable {
         currentTable = restaurantManager.getTable(clickedButton.getId());
         tabPane.getSelectionModel().select(tabOrders);
         labelShowCurrentTable.setText(currentTable.getName());
+
         //Populate Menu Box and ListViewBox
         if(currentTable.getOrders().size()==0){
-            choiceBoxMenu.setItems(items);
-            listViewOrders.getItems().clear();
+            choiceBoxMenu.setItems(menuItem);
+            listViewOrders.setItems(currentTable.getOrders());
             choiceBoxMenu.getSelectionModel().clearSelection();
         }else{
             displayCurrentOrders();
@@ -87,7 +80,7 @@ public class RestaurantController implements Initializable {
 
     public void onClickLoadMenu(ActionEvent actionEvent){
         listViewMenu.getItems().clear();
-        listViewMenu.setItems(items);
+        listViewMenu.setItems(menuItem);
     }
 
 
@@ -99,17 +92,14 @@ public class RestaurantController implements Initializable {
         if(choiceBoxMenu.getSelectionModel().getSelectedItem()==null) {
             labelError.setText("Choose a product");
         }else {
-            currentTable.addOrders((String) choiceBoxMenu.getSelectionModel().getSelectedItem());
+            currentTable.addOrders(choiceBoxMenu.getSelectionModel().getSelectedItem());
             displayCurrentOrders();
         }
     }
 
     private void displayCurrentOrders() {
-        listViewOrders.getItems().clear();
-        ordersList.clear();
-        orders = currentTable.getOrders();
-        ordersList.addAll(orders);
-        listViewOrders.setItems(ordersList);
+        listCurrentOrders = currentTable.getOrders();
+        listViewOrders.setItems(listCurrentOrders);
     }
 
     private void setTabAuthorisation() {
@@ -119,12 +109,12 @@ public class RestaurantController implements Initializable {
     }
 
     public void createBill(ActionEvent actionEvent) {
-        if(orders.size()!=0){
-            orders = currentTable.getOrders();
+        if(listCurrentOrders.size()!=0){
+            listCurrentOrders = currentTable.getOrders();
 
-            for (String a:orders){
-                System.out.println(a + "\n");
-            }
+//            for (String a:orders){
+//                System.out.println(a + "\n");
+//            }
             currentTable.clearTable();
             displayCurrentOrders();
         }

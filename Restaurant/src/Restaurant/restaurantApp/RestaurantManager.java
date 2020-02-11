@@ -1,6 +1,8 @@
 package Restaurant.restaurantApp;
 
 import Restaurant.io.MenuManager;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 /**
@@ -70,12 +72,12 @@ public class RestaurantManager {
     }
 
     private MenuManager menuManager;
-    private static ArrayList<Product> menu;
+    private static ObservableList<Product> menu;
 
-    public ArrayList<Product> getMenu() {
+    public ObservableList<Product> getMenu() {
 
         menuManager = new MenuManager();
-        menu = menuManager.readMenuFile();
+        menu =  menuManager.readMenuFile();
         return menu;
     }
 }

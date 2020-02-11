@@ -17,6 +17,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String description, Double price, int amount){
+        this.description = description;
+        this.price = price;
+        this.amount=amount;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -35,6 +41,11 @@ public class Product {
 
     public void delOneAmount(){
         amount--;
+    }
+
+    @Override
+    public String toString() {
+        return description;
     }
 }
 

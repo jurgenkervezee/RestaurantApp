@@ -1,6 +1,11 @@
 package Restaurant.io;
 
 import Restaurant.restaurantApp.Product;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -14,13 +19,14 @@ import java.util.Scanner;
 
 public class MenuManager {
 
-        private final ArrayList<Product> menu = new ArrayList<Product>();
+        //private final ArrayList<Product> menuList = new ArrayList<Product>();
+        private final ObservableList<Product> productList = FXCollections.observableArrayList();
         //SetFile
         private File file = new File("Restaurant/Menu.txt");
 
 
         //ReadMenu
-        public  ArrayList<Product> readMenuFile() {
+        public  ObservableList<Product> readMenuFile() {
 
             try {
                 Scanner scanner = new Scanner(file);
@@ -37,7 +43,7 @@ public class MenuManager {
 
                     //Save the products in the ArrayList
                     Product product = new Product(productDescription, price);
-                    menu.add(product);
+                    productList.add(product);
                 }
 
             } catch (FileNotFoundException e) {
@@ -49,11 +55,11 @@ public class MenuManager {
                     ex.printStackTrace();
                 }
             }
-            return menu;
+            return productList;
         }
 
     //informatie bewerken
-    public void saveMenu() {
+    public void saveMenu(ObservableList<Product> menu) {
 
 
         try {

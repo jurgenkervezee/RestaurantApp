@@ -3,3 +3,5 @@ BroodjeBal,2.01
 Katamaran,6.02
 PatatMet,2.00
 Kaviaar,300.00
+AugurkBier,25.00
+klapVanHerman,0.01

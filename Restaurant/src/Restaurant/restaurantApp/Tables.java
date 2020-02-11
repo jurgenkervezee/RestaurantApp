@@ -1,6 +1,7 @@
 package Restaurant.restaurantApp;
 
-import java.util.ArrayList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * @Author: Jurgen Kervezee
@@ -11,22 +12,21 @@ import java.util.ArrayList;
 public class Tables {
 
     private String name;
-    private ArrayList<String> orders;
+    private ObservableList<Product> orders = FXCollections.observableArrayList();
 
     public Tables(String name) {
         this.name = name;
-        orders = new ArrayList<String>();
     }
 
     public String getName(){
         return name;
     }
 
-    public void addOrders(String value) {
-        orders.add(value);
+    public void addOrders(Product product) {
+        orders.add(product);
     }
 
-    public ArrayList<String> getOrders(){
+    public ObservableList<Product> getOrders(){
         return orders;
     }
 

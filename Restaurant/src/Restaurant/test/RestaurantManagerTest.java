@@ -2,11 +2,10 @@ package Restaurant.test;
 
 import Restaurant.restaurantApp.Product;
 import Restaurant.restaurantApp.RestaurantManager;
-
 import Restaurant.restaurantApp.Tables;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 /**
@@ -26,7 +25,7 @@ class RestaurantManagerTest {
 
     @Test
     void getMenuTest() {
-        ArrayList<Product> test = new ArrayList<Product>();
+        ObservableList<Product> test = FXCollections.observableArrayList();
         test = RestaurantManager.get().getMenu();
         for (Product a:test)  {
             System.out.println(a.getDescription());
