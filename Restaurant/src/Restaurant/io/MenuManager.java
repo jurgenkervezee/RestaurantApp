@@ -59,8 +59,9 @@ public class MenuManager {
         }
 
     //informatie bewerken
+    //TODO
+    //SaveMenu nog verder ontwikkelen.
     public void saveMenu(ObservableList<Product> menu) {
-
 
         try {
             FileWriter fileWriter = new FileWriter(file);

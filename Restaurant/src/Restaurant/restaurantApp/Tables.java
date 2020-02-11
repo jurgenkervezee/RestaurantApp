@@ -2,6 +2,10 @@ package Restaurant.restaurantApp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import static jdk.nashorn.internal.objects.NativeMath.round;
 
 /**
  * @Author: Jurgen Kervezee
@@ -22,7 +26,7 @@ public class Tables {
         return name;
     }
 
-    public void addOrders(Product product) {
+    public void addToOrder(Product product) {
         orders.add(product);
     }
 
@@ -37,10 +41,18 @@ public class Tables {
 
     public Double payBill() {
 
-        Double value = 0.00;
-//        for (int i = 0; i < orders.size(); i++)
-//            value += orders.get(i);
+        double sum = 0.00;
+            for (Product product:orders){
+              sum = sum + product.getPrice();
+            }
+        return round(sum, 2);
+    }
 
-        return value;
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

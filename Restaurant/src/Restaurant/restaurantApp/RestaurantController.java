@@ -92,7 +92,7 @@ public class RestaurantController implements Initializable {
         if(choiceBoxMenu.getSelectionModel().getSelectedItem()==null) {
             labelError.setText("Choose a product");
         }else {
-            currentTable.addOrders(choiceBoxMenu.getSelectionModel().getSelectedItem());
+            currentTable.addToOrder(choiceBoxMenu.getSelectionModel().getSelectedItem());
             displayCurrentOrders();
         }
     }
@@ -109,12 +109,11 @@ public class RestaurantController implements Initializable {
     }
 
     public void createBill(ActionEvent actionEvent) {
+        double billTotal;
         if(listCurrentOrders.size()!=0){
             listCurrentOrders = currentTable.getOrders();
-
-//            for (String a:orders){
-//                System.out.println(a + "\n");
-//            }
+            billTotal = currentTable.payBill();
+            System.out.println(billTotal);
             currentTable.clearTable();
             displayCurrentOrders();
         }
