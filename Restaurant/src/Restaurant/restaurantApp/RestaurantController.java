@@ -42,22 +42,22 @@ public class RestaurantController implements Initializable {
 
     private Users currentUser;
     private Tables currentTable;
-    private RestaurantManager restaurantManager;
+//    private RestaurantManager restaurantManager;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         currentUser = UserManager.getCurrent();
         lableCurrentUser.setText(currentUser.getName());
         setTabAuthorisation();
-        restaurantManager = new RestaurantManager();
         menuItem = RestaurantManager.get().getMenu();
+
     }
 
 
     public void handleTableClick(ActionEvent actionEvent) {
 
         Button clickedButton = (Button)actionEvent.getSource();
-        currentTable = restaurantManager.getTable(clickedButton.getId());
+        currentTable = RestaurantManager.get().getTable(clickedButton.getId());;
         tabPane.getSelectionModel().select(tabOrders);
         labelShowCurrentTable.setText(currentTable.getName());
 
