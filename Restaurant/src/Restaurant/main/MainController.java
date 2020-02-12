@@ -18,11 +18,11 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     @FXML
     AnchorPane mainStage;
-    private RestaurantManager restaurantManager;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        restaurantManager = new RestaurantManager();
+
     }
 
     public void setStage(Parent root) {
